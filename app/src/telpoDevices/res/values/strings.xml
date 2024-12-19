@@ -1,0 +1,12 @@
+<resources>
+    <string name="title_activity_printer">Print Receipt</string>
+
+    <string name="print">Print</string>
+    <string name="printer_init">Initialising Printer</string>
+    <string name="printing">Printing</string>
+
+    <string name="print_error">Print Error</string>
+    <string name="print_error_no_paper">No paper, please put paper in and retry</string>
+    <string name="print_error_over_heat">Printer is over heated. Please retry after some time</string>
+    <string name="print_error_unknown">Printer Error. Please try again</string>
+</resources>

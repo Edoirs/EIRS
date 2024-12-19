@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="ng.gov.eirs.mas.erasmpoa">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <application
+        android:name=".app.BaseApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:allowBackup">
+
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:exported="true"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--<activity-->
+        <!--android:name=".ui.auth.ForgotPasswordActivity"-->
+        <!--android:configChanges="orientation|keyboardHidden|screenSize"-->
+        <!--android:label="@string/forgot_password"-->
+        <!--android:screenOrientation="portrait"-->
+        <!--android:windowSoftInputMode="adjustResize|stateHidden" />-->
+        <!--<activity-->
+        <!--android:name=".ui.auth.ResetPasswordActivity"-->
+        <!--android:configChanges="orientation|keyboardHidden|screenSize"-->
+        <!--android:label="@string/reset_password"-->
+        <!--android:screenOrientation="portrait"-->
+        <!--android:windowSoftInputMode="adjustResize|stateHidden" />-->
+        <activity
+            android:name=".ui.home.AppUpdateActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Translucent"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.home.TargetActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+
+        <!-- Pay Bill -->
+        <activity
+            android:name=".ui.paybill.PayBillActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/pay_bill"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.paybill.BillDetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/bill_details"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.paybill.RuleItemActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/bill_details"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.paybill.BillDetailFullActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/bill_details"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.paybill.TaxPayerDetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/tax_payer_details"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.paybill.SettlementDetailActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/settlement_history"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <!-- Pay On Account -->
+        <activity
+            android:name=".ui.payonaccount.PayOnAccountActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/pay_on_account"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.payonaccount.SelectGSCActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.payonaccount.SubmissionActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/submission"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.payonaccount.UnsyncedPoaActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/unsynced_poa"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <!-- Haulage -->
+        <activity
+            android:name=".ui.haulage.HaulageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/haulage"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.haulage.UnsyncedHaulageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/unsynced_poa"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <!-- Sync -->
+        <activity
+            android:name=".ui.sync.SyncActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/sync"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.sync.ScratchCardSyncActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/scratch_card_denomination"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".ui.sync.SyncStatusActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/sync"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <service
+            android:name=".ui.sync.SyncService"
+            android:exported="false" />
+
+        <!-- File Provider -->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <!-- ZBar scanner -->
+        <activity
+            android:name=".ui.barcode.SimpleScannerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="99cd435606520173a2cdf7fc783755c517c296e0" />
+    </application>
+
+</manifest>

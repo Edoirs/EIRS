@@ -1,0 +1,206 @@
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-kapt"
+apply plugin: "kotlin-android-extensions"
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        applicationId "ng.gov.eirs.mas.erasmpoa"
+        versionName "1.3"
+        versionCode 33
+
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            applicationVariants.all { variant ->
+                variant.outputs.all { ->
+                    outputFileName = "eras-mpoa-${variant.name} (${variant.versionCode}).apk"
+                }
+            }
+        }
+    }
+
+    flavorDimensions "server", "device"
+    productFlavors {
+        live {
+            dimension "server"
+
+        }
+        dev {
+            dimension "server"
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+        }
+        doberman2 {
+            dimension "server"
+            applicationIdSuffix ".doberman2"
+            versionNameSuffix "-doberman2"
+        }
+
+        // device flavors
+        allDevices {
+            dimension "device"
+            versionNameSuffix "-allDevices"
+            targetSdkVersion rootProject.targetSdkVersion
+        }
+        telpoDevices {
+            dimension "device"
+            versionNameSuffix "-telpoDevices"
+            targetSdkVersion 26
+        }
+        horizonDevices {
+            dimension "device"
+            versionNameSuffix "-horizonDevices"
+            targetSdkVersion 26//rootProject.targetSdkVersion
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+//    dexOptions {
+//        javaMaxHeapSize "4g"
+//        preDexLibraries = false
+//    }
+}
+
+configurations.all {
+    resolutionStrategy {
+        eachDependency { details ->
+            // Force all primary support libraries to the same version
+            if (details.requested.group == 'com.android.support'
+                    && details.requested.name != 'multidex'
+                    && details.requested.name != 'multidex-instrumentation') {
+                // Force the version that works for you.
+                // Square has tested ReaderSDK with 26.0.2
+                details.useVersion '26.1.0'
+            }
+        }
+    }
+}
+
+dependencies {
+    // TELPO DEVICE SPECIFIC DEPENDENCIES
+
+    // local libs dependencies
+    // telpoDevicesImplementation files('libs/core-3.1.0.jar')
+    telpoDevicesImplementation files('libs/SmartCardLib.jar')
+    telpoDevicesImplementation files('libs/telpo_api.jar')
+
+    // android support libs
+    telpoDevicesImplementation "com.android.support:animated-vector-drawable:26.1.0"
+    telpoDevicesImplementation "com.android.support:appcompat-v7:26.1.0"
+    telpoDevicesImplementation "com.android.support:support-v4:26.1.0"
+    telpoDevicesImplementation "com.android.support:support-v13:26.1.0"
+    telpoDevicesImplementation "com.android.support:cardview-v7:26.1.0"
+    telpoDevicesImplementation "com.android.support:gridlayout-v7:26.1.0"
+    telpoDevicesImplementation "com.android.support:recyclerview-v7:26.1.0"
+    telpoDevicesImplementation "com.android.support:design:26.1.0"
+
+    // HORIZONPAY DEVICE SPECIFIC DEPENDENCIES
+    horizonDevicesImplementation files('libs/horizonpay_smartpossdk_V1.14.231108.jar')
+    horizonDevicesImplementation files('libs/horizon_utils_V1.9.jar')
+    horizonDevicesImplementation "com.android.support:appcompat-v7:$supportLibraryVersion"
+    horizonDevicesImplementation "com.android.support:support-v4:$supportLibraryVersion"
+    horizonDevicesImplementation "com.android.support:support-v13:$supportLibraryVersion"
+    horizonDevicesImplementation "com.android.support:cardview-v7:$supportLibraryVersion"
+    horizonDevicesImplementation "com.android.support:gridlayout-v7:$supportLibraryVersion"
+    horizonDevicesImplementation "com.android.support:animated-vector-drawable:$supportLibraryVersion"
+    horizonDevicesImplementation "com.android.support:recyclerview-v7:$supportLibraryVersion"
+    horizonDevicesImplementation "com.android.support:design:$supportLibraryVersion"
+
+
+    // ALL DEVICES DEPENDENCIES
+
+    // android support libs
+    allDevicesImplementation "com.android.support:appcompat-v7:$supportLibraryVersion"
+    allDevicesImplementation "com.android.support:support-v4:$supportLibraryVersion"
+    allDevicesImplementation "com.android.support:support-v13:$supportLibraryVersion"
+    allDevicesImplementation "com.android.support:cardview-v7:$supportLibraryVersion"
+    allDevicesImplementation "com.android.support:gridlayout-v7:$supportLibraryVersion"
+    allDevicesImplementation "com.android.support:animated-vector-drawable:$supportLibraryVersion"
+    allDevicesImplementation "com.android.support:recyclerview-v7:$supportLibraryVersion"
+    allDevicesImplementation "com.android.support:design:$supportLibraryVersion"
+
+    // COMMON DEPENDENCIES
+
+     // Coroutines Dependency
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+
+    // multidex
+    implementation "com.android.support:multidex:$multidexVersion"
+
+    // constraint layout
+    implementation "com.android.support.constraint:constraint-layout:$constraintLayoutVersion"
+
+//    // Lifecycle
+//    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion" //-ktx
+//    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycleVersion"
+//    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
+
+    // Google play services
+    implementation "com.google.android.gms:play-services-safetynet:$googlePlayServicesVersion"
+
+    // rx android and java
+
+    // RxJava2
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
+
+    // retrofit and okhttp
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+
+    // rx lifecycle3
+//    implementation "com.trello.rxlifecycle3:rxlifecycle:$rxLifecycle3Version"
+//    implementation "com.trello.rxlifecycle3:rxlifecycle-kotlin:$rxLifecycle3Version"
+//    implementation "com.trello.rxlifecycle3:rxlifecycle-components:$rxLifecycle3Version"
+
+    // rx lifecycle
+    implementation "com.trello.rxlifecycle2:rxlifecycle:$rxLifecycleVersion"
+    implementation "com.trello.rxlifecycle2:rxlifecycle-kotlin:$rxLifecycleVersion"
+    implementation "com.trello.rxlifecycle2:rxlifecycle-components:$rxLifecycleVersion"
+
+    // dbflow
+    kapt "com.github.Raizlabs.DBFlow:dbflow-processor:$dbFlowVersion"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-core:$dbFlowVersion"
+    implementation "com.github.Raizlabs.DBFlow:dbflow:$rootProject.dbFlowVersion"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-kotlinextensions:$rootProject.dbFlowVersion"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-rx2:$rootProject.dbFlowVersion"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-rx2-kotlinextensions:$rootProject.dbFlowVersion"
+
+    // barcode scanner
+    implementation "me.dm7.barcodescanner:zxing:$rootProject.zxingVersion"
+
+    // glide image loader
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+
+    // kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+
+    // aspect ration viewsa
+//    implementation "me.himanshusoni.aspectratioview:aspect-ratio-view:$rootProject.aspectRatioViewVersion" //replaced with a customView ng.gov.eirs.mas.erasmpoa.customviews.AspectRatioLinearLayout
+
+    // test
+    testImplementation "junit:junit:$junitVersion"
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navHome"
+            android:checked="true"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/navPayBill"
+            android:checkable="false"
+            android:icon="@drawable/ic_insert_drive_file_black_24dp"
+            android:title="@string/pay_bill" />
+        <item
+            android:id="@+id/navPayAccount"
+            android:checkable="false"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="@string/pay_on_account" />
+        <item
+            android:id="@+id/navHaulage"
+            android:checkable="false"
+            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:title="@string/haulage" />
+        <item
+            android:id="@+id/navTarget"
+            android:checkable="false"
+            android:icon="@drawable/ic_track_changes_24dp"
+            android:title="@string/target" />
+        <item
+            android:id="@+id/navUnsyncedPoa"
+            android:checkable="false"
+            android:visible="false"
+            android:icon="@drawable/ic_sync_problem_black_24dp"
+            android:title="@string/unsynced_poa" />
+        <item
+            android:visible="false"
+            android:id="@+id/navUnsyncedHaulage"
+            android:checkable="false"
+            android:icon="@drawable/ic_sync_problem_black_24dp"
+            android:title="@string/unsynced_haulage" />
+        <item
+            android:id="@+id/navSync"
+            android:checkable="false"
+            android:icon="@drawable/ic_sync_black_24dp"
+            android:title="@string/sync" />
+    </group>
+</menu>
