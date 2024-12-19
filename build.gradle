@@ -1,0 +1,95 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext {
+        // Sdk and tools
+//        compileSdkVersion = 28
+//        minSdkVersion = 17
+//        targetSdkVersion = 28
+        compileSdkVersion = 32//34
+        minSdkVersion = 21
+        targetSdkVersion = 32//34
+
+        multidexVersion = '1.0.3'
+        supportLibraryVersion = '28.0.0'
+        constraintLayoutVersion = '1.1.3'
+
+        // AndroidX
+//        multidexVersion = '2.0.0'
+        androidXLegacyVersion = '1.0.0'
+        androidXVectorVersion = '1.0.1'
+        androidXAppCompatVersion = '1.0.2'
+        androidXConstraintLayoutVersion = '2.0.0-alpha2'
+
+        // Android Architecture Components
+        lifecycleVersion = '2.0.0'
+        pagingVersion = "2.1.0-beta01"
+        navVersion = "1.0.0-alpha07"
+        workVersion = "1.0.0-alpha11"
+
+        // Google
+        flexboxVersion = '0.3.0'
+        materialVersion = '1.1.0-alpha01'
+        googlePlayServicesVersion = '16.0.0'
+
+        // Rx
+        rxAndroidVersion = '2.1.0'
+        rxJavaVersion = '2.2.3'
+        rxKotlinVersion = '2.3.0'
+        rxLifecycle3Version = '3.0.0'
+        rxLifecycleVersion = '2.2.2'
+
+        // Retrofit
+        retrofitVersion = '2.4.0'
+        okHttpVersion = '3.11.0'
+
+        // Others
+        dbFlowVersion = '4.2.4'
+        crashlyticsVersion = '2.9.6'
+        picassoVersion = '2.5.2'
+        glideVersion = '4.4.0'
+        gsonVersion = '2.8.5'
+        zxingVersion = '1.9.8'
+        pinEntryViewVersion = '1.0.6'
+        dateRangePickerVersion = '1.9'
+        mpChartVersion = 'v3.0.3'
+        materialDatePickerVersion = '3.3.1'
+        quantityViewVersion = '1.2.0'
+//        aspectRatioViewVersion = '1.0'
+        daggerVersion = '2.19'
+
+        // Test
+        espressoVersion = '3.0.2'
+        junitVersion = '4.12'
+        runnerVersion = '1.0.2'
+
+        // classpath dependencies
+//        kotlinVersion = '1.3.10'
+        kotlinVersion = '1.6.10'
+        googleServicesPluginVersion = '3.2.0'
+//        gradlePluginVersion = '3.6.1'
+        gradlePluginVersion = '7.2.1'
+        safeArgsVersion = '1.0.0-alpha07'
+    }
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$gradlePluginVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

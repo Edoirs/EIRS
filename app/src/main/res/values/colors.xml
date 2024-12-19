@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#26a69a</color>
+    <color name="primary_dark">#27948a</color>
+    <color name="accent">#26a69a</color>
+
+    <color name="icons">@color/md_grey_600</color>
+    <color name="window_background">@color/md_grey_50</color>
+</resources>
